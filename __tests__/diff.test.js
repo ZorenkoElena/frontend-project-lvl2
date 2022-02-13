@@ -24,5 +24,5 @@ test('diff', () => {
   const secondFile = getFixturePath('file2.json');
   const expectedAnswer = readFile('result.txt');
   const recevedAnswer = diff(firstFile, secondFile);
-  expect(expectedAnswer).toBe(recevedAnswer);
+  expect(expectedAnswer).toEqual(recevedAnswer);
 });
