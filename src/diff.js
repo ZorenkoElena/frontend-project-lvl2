@@ -1,23 +1,24 @@
 import _ from 'lodash';
-import * as fs from 'fs';
-import path from 'path';
+import parse from './parse.js';
+// import * as fs from 'fs';
+// import path from 'path';
 
-// const pathSample = '__fixtures__/file1.json';
-// const pathSample2 = '__fixtures__/file2.json';
+const pathSample = '__fixtures__/file1.json';
+const pathSample2 = '__fixtures__/file2.json';
 
 const findDifferense = (path1, path2) => {
-  const fullPath = path.resolve(process.cwd(), path1);
-  const fullPath2 = path.resolve(process.cwd(), path2);
-
-  const file1Json = fs.readFileSync(fullPath, 'utf8');
-  const file2Json = fs.readFileSync(fullPath2, 'utf8');
-
-  const file1obj = JSON.parse(file1Json);
-  const file2obj = JSON.parse(file2Json);
-
+  const file1obj = parse(path1);
+  console.log('file1obj:_', parse(path1));
+  const file2obj = parse(path2);
+  console.log('file2obj:_', file2obj);
   const file1ArrayOfKeys = Object.keys(file1obj);
+  console.log('file1ArrayOfKeys:_', file1ArrayOfKeys);
+
   const file2ArrayOfKeys = Object.keys(file2obj);
+  console.log('file2ArrayOfKeys:_', file2ArrayOfKeys);
+
   const commonArrayOfKeys = _.union(file1ArrayOfKeys, file2ArrayOfKeys).sort();
+  console.log('commonArrayOfKeys:_', commonArrayOfKeys);
 
   const midleresult = commonArrayOfKeys.reduce((acc, key) => {
     const newline = [];
@@ -37,8 +38,15 @@ const findDifferense = (path1, path2) => {
     }
     return [...acc, ...newline];
   }, []);
+
+  console.log('midleresult:_', midleresult);
+
   const result = `{\n${midleresult.join('\n')}\n}`;
+
+  console.log('result:_', result);
   return result;
 };
-// findDifferense(pathSample, pathSample2);
+// console.log(findDifferense(pathSample, pathSample2));
+
+findDifferense(pathSample, pathSample2);
 export default findDifferense;
