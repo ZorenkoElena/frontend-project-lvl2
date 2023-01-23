@@ -1,10 +1,10 @@
 import fs from 'fs';
-// import yaml from "js-yaml";
+import yaml from 'js-yaml';
 import { fileURLToPath } from 'url';
 import path from 'path';
 
-// const pathSample = '__fixtures__/file1.json';
-
+// const pathSampleJson = 'file1.json';
+// const pathSampleYml = 'file1.yml';
 // console.log('pathSample:', pathSample);
 // console.log('process.cwd():_', process.cwd());
 
@@ -16,25 +16,25 @@ import path from 'path';
 const parse = (filename) => {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
-  const absolutePath = path.resolve(__dirname, '..', filename);
+  const absolutePath = path.resolve(__dirname, '..', '__fixtures__', filename);
 
   // console.log('absolutePath:_', absolutePath);
 
   const readFile = fs.readFileSync(absolutePath, 'utf8');
 
   // console.log('readFile:_', readFile);
-  // console.log('JSON.parse(readFile):_', JSON.parse(readFile));
-  // const format = path.extname(filename);
 
-  // return JSON.parse(readFile);
+  const format = path.extname(filename);
 
-  // if (format === ".json") {
-  return JSON.parse(readFile);
-  // }
-  // if (format === ".yml" || format === ".yaml") {
-  // return yaml.load(readFile);
-  // }
+  if (format === '.json') {
+    // console.log('JSON.parse(readFile):_', JSON.parse(readFile));
+    return JSON.parse(readFile);
+  }
+  if (format === '.yml' || format === '.yaml') {
+    // console.log('yaml.load(readFile):_', yaml.load(readFile));
+    return yaml.load(readFile);
+  }
+  return console.log('Unknown fornmat. You can use JSON or YAML formats.');
 };
-// parse(pathSample);
 
 export default parse;
