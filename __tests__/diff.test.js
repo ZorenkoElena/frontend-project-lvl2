@@ -1,28 +1,26 @@
+import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import * as fs from 'fs';
-import diff from '../src/diff.js';
+import diff from '../src/index.js';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const pathSample = 'result.txt';
 
-const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const absolutePath = (filename) =>
+  path.resolve(__dirname, '..', '__fixtures__', filename);
+console.log('absolutePath(pathSample):_', absolutePath(pathSample));
 
-const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
+const readFile = (filename) => fs.readFileSync(absolutePath(filename), 'utf8');
 
-// const firstFile = getFixturePath('file1.json');
-//   const secondFile = getFixturePath('file2.json');
-//   const expectedAnswer = readFile('result.txt');
-//   const recevedAnswer = diff(firstFile, secondFile);
+console.log('readFile(pathSample):_', readFile(pathSample));
 
-// console.log('firstFile', firstFile);
-// console.log('secondFile', secondFile);
-// console.log('expectedAnswer', expectedAnswer);
-// console.log('recevedAnswer', recevedAnswer);
+const expectedAnswer = readFile('result.txt');
+console.log('expectedAnswer:_', expectedAnswer);
+
+const recevedAnswer = diff('file1.json', 'file2.json');
+console.log('recevedAnswer:_', recevedAnswer);
 
 test('diff', () => {
-  const firstFile = getFixturePath('file1.json');
-  const secondFile = getFixturePath('file2.yml');
-  const expectedAnswer = readFile('result.txt');
-  const recevedAnswer = diff(firstFile, secondFile);
   expect(expectedAnswer).toEqual(recevedAnswer);
 });
