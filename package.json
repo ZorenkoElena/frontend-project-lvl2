@@ -2,18 +2,18 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/ZorenkoElena/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/ZorenkoElena/frontend-project-lvl2/actions)",
-  "main": "src/diff.js",
+  "main": "src/index.js",
   "engines": {
     "node": ">=14"
   },
   "scripts": {
-    "test": "npx jest --bail"
+    "test": "npx jest"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ZorenkoElena/frontend-project-lvl2.git"
   },
-  "author": "",
+  "author": "Elena Zorenko",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ZorenkoElena/frontend-project-lvl2/issues"
@@ -32,11 +32,12 @@
     "url": "^0.11.0"
   },
   "devDependencies": {
-    "eslint": "^8.8.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.24.1",
-    "eslint-plugin-jest": "^26.1.0",
-    "jest": "^27.4.7",
-    "jest-cli": "^27.5.1"
+    "@jest/globals": "^29.3.1",
+    "eslint": "^8.23.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^27.0.0",
+    "jest": "^29.0.1",
+    "jest-cli": "^29.0.1"
   }
 }
