@@ -34,7 +34,8 @@ const showDetailedOutput = (dataArray, deep = 0) => {
     }
   });
 
-  const resultString = `{\n${result.flat().join('\n')}\n${indent(deep)}}`;
+  // const resultString = `{\n${result.flat().join('\n')}\n${indent(deep)}}`;
+  const resultString = `{\n${result.join('\n')}\n${indent(deep)}}`;
   // console.log(resultString);
   return resultString;
 };
