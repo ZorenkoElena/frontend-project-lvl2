@@ -1,13 +1,18 @@
 #!/usr/bin/env node
 
-import { program } from 'commander';
+import { Command } from 'commander';
 import diff from '../src/index.js';
 
+const program = new Command();
+
 program
-  .version('0.0.1', '-V, --version', 'output the version number')
+  .version('1.0.0', '-V, --version', 'output the version number')
   .description('Compares two configuration files and shows a difference.')
-  .arguments('<filepath1> <filepath2>')
-  .action((filepath1, filepath2) => console.log(diff(filepath1, filepath2)))
   .helpOption('-h, --help', 'output usage information')
-  .option('-f, --format [type]', 'output format')
-  .parse(process.argv);
+  .arguments('<filepath1> <filepath2>')
+  .option('-f, --format <type>', 'output format')
+  .action((filepath1, filepath2, options) => {
+    console.log(diff(filepath1, filepath2, options.format));
+  });
+
+program.parse();
