@@ -50,3 +50,7 @@ cd gendiff
 make install
 npm link
 ```
+
+### Demo
+
+[![asciicast](https://asciinema.org/a/LXJbFGJTqZ64D6bnq4sJUsx9f.svg)](https://asciinema.org/a/LXJbFGJTqZ64D6bnq4sJUsx9f)
