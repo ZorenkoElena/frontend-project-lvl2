@@ -53,4 +53,4 @@ npm link
 
 ### Demo
 
-[![asciicast](https://asciinema.org/a/LXJbFGJTqZ64D6bnq4sJUsx9f.svg)](https://asciinema.org/a/LXJbFGJTqZ64D6bnq4sJUsx9f)
+[![asciicast](https://asciinema.org/a/555391.svg)](https://asciinema.org/a/555391)
