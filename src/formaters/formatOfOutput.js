@@ -1,6 +1,7 @@
 import showDetailedOutput from './stylish.js';
 import showPlainOutput from './plain.js';
 
+// eslint-disable-next-line consistent-return
 const convertToDesiredFormat = (data, format) => {
   switch (format) {
     case 'stylish':

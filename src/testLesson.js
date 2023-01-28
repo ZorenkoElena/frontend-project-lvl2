@@ -11,6 +11,7 @@ const jsonTostring = (value, replacer = ' ', spacesCount = 1) => {
   console.log('dataToArray:', dataToArray);
 
   const midleResult = dataToArray.reduce((acc, [key, value1], index) => {
+    // eslint-disable-next-line operator-linebreak
     const finishValue =
       typeof value1 !== 'object'
         ? String(value1)
